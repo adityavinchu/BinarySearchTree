@@ -10,21 +10,35 @@ namespace BinarySearchTree
     {
         static void Main(string[] args)
         {
-            BinaryTree number = new BinaryTree();
-            Node root = new Node();
 
-            number.Insert(56);
-            number.Insert(30);
-            number.Insert(70);
-            number.Insert(76);
-            number.Insert(34);
-            number.Insert(80);
+            BinaryTree searchTree = new BinaryTree();
+            searchTree.Add(56);
+            searchTree.Add(30);
+            searchTree.Add(70);
+            searchTree.Add(22);
+            searchTree.Add(40);
+            searchTree.Add(60);
+            searchTree.Add(95);
+            searchTree.Add(22);
+            searchTree.Add(11);
+            searchTree.Add(3);
+            searchTree.Add(16);
+            searchTree.Add(65);
+            searchTree.Add(63);
+            searchTree.Add(67);
 
-            Display display = new Display();
-            display.DisplayTree(root);
+            if (searchTree.Search(63))
+            {
+                Console.WriteLine("It is present in our tree");
+                Console.ReadLine(); 
+            }
+            else
+            {
+                Console.WriteLine("It is not present in the list");
+                Console.ReadLine();
+            }
 
-            Console.WriteLine("\n The size of binary tree is : " + number.count);
-            Console.ReadLine();
+
         }
     }
 }

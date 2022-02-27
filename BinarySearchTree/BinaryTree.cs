@@ -8,13 +8,14 @@ namespace BinarySearchTree
 {
     public class BinaryTree
     {
-        public int count = 0;
         public Node root;
+        public int count = 0;
         public BinaryTree()
         {
             root = null;
         }
-        public void Insert(int data)
+
+        public void Add(int data)
         {
             count++;
             if (root == null)
@@ -22,33 +23,55 @@ namespace BinarySearchTree
                 root = new Node(data);
                 return;
             }
-            InsertNumber(root, new Node(data));
+            Insert(root, new Node(data));
         }
-        public void InsertNumber(Node root, Node newNode)
+        public void Insert(Node root, Node newnode)
         {
-            if (newNode.Data < root.Data)
+
+            if (root.Data > newnode.Data)
             {
-                if (root.Left == null)
-                { 
-                    root.Left = newNode;
+                if (root.left == null)
+                {
+                    root.left = newnode;
                     return;
                 }
-                InsertNumber(root.Left, newNode);
+                Insert(root.left, newnode);
             }
             else
             {
-                if (root.Right == null)
+                if (root.right == null)
                 {
-                    root.Right = newNode;
+                    root.right = newnode;
                     return;
                 }
-                    
-                
-                InsertNumber(root.Right, newNode);
+                Insert(root.right, newnode);
             }
+
         }
+        public bool Search(int data)
+        {
+            return SearchElement(data, root);
+        }
+        public bool SearchElement(int data, Node root)
+        {
+            if (root == null) return false;
+            if (root.Data == data) return true;
+            if (root.Data < data) return SearchElement(data, root.right);
+            else
+                return SearchElement(data, root.left);
+        }
+        private void DisplayTree(Node root)
+        {
+            if (root == null) return;
 
-
-
+            DisplayTree(root.left);
+            System.Console.Write(root.Data + " ");
+            DisplayTree(root.right);
+        }
+        public void Display()
+        {
+            DisplayTree(root);
+            Console.ReadLine();
+        }
     }
 }
