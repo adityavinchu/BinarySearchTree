@@ -10,11 +10,14 @@ namespace BinarySearchTree
     {
         public void DisplayTree(Node root)
         {
-            if (root == null) return;
-
-            DisplayTree(root.Left);
-            System.Console.Write(root.Data + " ");
-            DisplayTree(root.Right);
+            if (root == null) 
+                return;
+            else
+            { 
+                DisplayTree(root.Left);
+                Console.Write(root.Data + " ");
+                DisplayTree(root.Right);
+            }
         }
     }
 }

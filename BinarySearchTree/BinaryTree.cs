@@ -8,6 +8,7 @@ namespace BinarySearchTree
 {
     public class BinaryTree
     {
+        public int count = 0;
         public Node root;
         public BinaryTree()
         {
@@ -15,6 +16,7 @@ namespace BinarySearchTree
         }
         public void Insert(int data)
         {
+            count++;
             if (root == null)
             {
                 root = new Node(data);
@@ -27,17 +29,26 @@ namespace BinarySearchTree
             if (newNode.Data < root.Data)
             {
                 if (root.Left == null)
+                { 
                     root.Left = newNode;
-                else
-                    InsertNumber(root.Left, newNode);
+                    return;
+                }
+                InsertNumber(root.Left, newNode);
             }
             else
             {
                 if (root.Right == null)
+                {
                     root.Right = newNode;
-                else
-                    InsertNumber(root.Right, newNode);
+                    return;
+                }
+                    
+                
+                InsertNumber(root.Right, newNode);
             }
         }
+
+
+
     }
 }
